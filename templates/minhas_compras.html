@@ -1,0 +1,17 @@
+<h1>Minhas Compras</h1>
+
+<ul>
+
+{% for p in produtos %}
+
+<li>
+
+{{p[0]}}
+
+<a href="/download/{{p[2]}}">Baixar</a>
+
+</li>
+
+{% endfor %}
+
+</ul>

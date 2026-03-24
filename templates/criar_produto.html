@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 style="text-align:center;">🤖 Criar Produto com AI</h2>
+
+<div class="card" style="max-width:500px; margin:auto; text-align:center;">
+
+<form method="POST" enctype="multipart/form-data">
+
+<input type="text" name="nome" placeholder="Nome do Produto" style="width:90%; padding:10px; margin:5px;"><br>
+
+<textarea name="descricao" placeholder="Tema do Produto / AI" style="width:90%; padding:10px; margin:5px;"></textarea><br>
+
+<input type="number" name="preco" placeholder="Preço (MZN)" style="width:90%; padding:10px; margin:5px;"><br>
+
+<!-- Arquivo só aparece se usuário quiser enviar manualmente -->
+<input type="file" name="arquivo" style="width:90%; margin:5px;"><br>
+
+<button type="submit" class="btn">Gerar e Enviar Produto</button>
+
+</form>
+
+</div>
+
+{% endblock %}

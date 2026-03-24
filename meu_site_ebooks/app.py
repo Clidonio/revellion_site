@@ -1,0 +1,92 @@
+from flask import Flask, request, flah
+redirect, url_for, send_from_directory
+import os
+import uuid 
+from datetime import datetime, timedelta
+import sqlite3
+# Configurações
+UPLOAD_FOLDER = "uploads"
+DB_FILE = "banco.db"
+app = Flask(__name__)
+app.secret_key = "sua_chave_secreta" 
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+# Função para conectar ao banco
+def conectar():
+    return sqlite3.connect(DB_FILE)
+# Criar tabela automaticamente
+def criar_tabela():
+    conn = conectar() 
+    conn.execute(""" CREATE TABLE IF NOT EXISTS 
+    arquivos (
+        id INTEGER PRIMARY KEY AUTOINCREMENT, titulo 
+        TEXT NOT NULL, nome_arquivo TEXT NOT NULL, 
+        link_unico TEXT NOT NULL, expira_em TEXT NOT 
+        NULL, ativo INTEGER DEFAULT 1
+    ) """)
+    conn.commit()
+    conn.close()
+# Gerar nome único
+def gerar_nome_arquivo(arquivo):
+    return str(uuid.uuid4()) + "_" + arquivo.filename
+# Gerar link único
+def gerar_link_unico():
+    return str(uuid.uuid4())
+# Rota do painel
+@app.route("/painel")
+def painel():
+    return "/Painel de controle"
+# Rota de upload
+@app.route("/upload", methods=["POST"])
+def upload():
+    titulo = request.form.get("titulo")
+    arquivo = request.files.get("arquivo")
+if not arquivo:
+    flash("Selecione um arquivo.")
+def login():
+    usuario == "admin" and senha == "123"
+return
+redirect(url_for("painel"))
+# Garante que a pasta existe
+nome_arquivo = gerar_nome_arquivo(arquivo)
+caminho = os.path.join(app.config["UPLOAD_FOLDER"], nome_arquivo)
+arquivo.save(caminho)
+link_unico = gerar_link_unico()
+expira = (datetime.now() + timedelta(hours=24)).isoformat()
+conn = conectar()
+conn.execute( "INSERT INTO arquivos (titulo, nome_arquivo,  link_unico, expira_em, ativo) VALUES (?, ?, ?, ?, 1)", (titulo, nome_arquivo, 
+link_unico, expira))
+conn.commit()
+conn.close()
+flash("Upload feito com sucesso!")
+return redirect(url_for("painel"))
+# Rota de download
+@app.route("/download/<link>")
+def download(link): 
+    conn = conectar()
+row = conn.execute("SELECT nome_arquivo, expira_em FROM  arquivos WHERE link_unico=? AND ativo=1"  (link,)
+).fetchone()
+conn.close()
+if not row:
+  return  "Link inválido ou expirado."
+nome_arquivo, expira = row
+ # Verifica expiração
+if datetime.fromisoformat(expira)< datetime.now():
+    conn = conectar()
+    conn.execute("UPDATE arquivos SET ativo=0 WHERE link_unico=?",  (link,))
+    conn.commit()
+    conn.close()
+    return "Link expirado."
+    return send_from_directory(app.config["UPLOAD_FOLDER"],nome_arquivo, as_attachment=True)
+# Iniciar servidor
+if __name__ == "__main__":
+    # verifica se a pasta de uploads existe, cria se não existir
+    if not os.path.exists(UPLOAD_FOLDER): 
+        os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
+    # garante que a tabela exista antes de iniciar o 
+    # servidor
+    criar_tabela()
+    # inicia o servidor
+    app.run(host="0.0.0.0", port=10000, debug=True)
+0
+0
+

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>📊 Meu Dashboard</h1>
+
+<div class="grid">
+
+<div class="card">
+<p>💰 Ganhos: {{total_ganhos}} MZN</p>
+<p>📈 Vendas: {{total_vendas}}</p>
+</div>
+
+{% for p in produtos %}
+<div class="card">
+<p>{{p[1]}} - {{p[4]}} MZN</p>
+</div>
+{% endfor %}
+
+</div>
+
+{% endblock %}

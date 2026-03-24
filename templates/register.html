@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card" style="max-width:400px; margin:auto; text-align:center;">
+
+<h2>📝 Registrar</h2>
+
+<form method="POST">
+
+<input type="text" name="nome" placeholder="Nome" style="width:90%; padding:10px; margin:5px;"><br>
+
+<input type="email" name="email" placeholder="Email" style="width:90%; padding:10px; margin:5px;"><br>
+
+<input type="password" name="password" placeholder="Senha" style="width:90%; padding:10px; margin:5px;"><br>
+
+<button type="submit" class="btn">Criar Conta</button>
+
+</form>
+
+<p><a href="/login">Já tem conta? Entrar</a></p>
+
+</div>
+
+{% endblock %}

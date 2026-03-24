@@ -1,0 +1,37 @@
+<h1>💰 Dashboard Financeiro</h1>
+
+<h2>Saldo: {{saldo}} MZN</h2>
+
+<hr>
+
+<h3>📊 Vendas</h3>
+
+{% for v in vendas %}
+<p>{{v[0]}} - {{v[1]}} MZN - {{v[2]}}</p>
+{% else %}
+<p>Sem vendas ainda.</p>
+{% endfor %}
+
+<hr>
+
+<h3>💸 Pedir Saque</h3>
+
+<form method="POST" action="/pedir_saque">
+Valor:<br>
+<input type="number" name="valor"><br><br>
+
+Número M-Pesa:<br>
+<input type="text" name="numero"><br><br>
+
+<button type="submit">Solicitar Saque</button>
+</form>
+
+<hr>
+
+<h3>📤 Histórico de Saques</h3>
+
+{% for s in saques %}
+<p>{{s[0]}} MZN - {{s[1]}} - {{s[2]}}</p>
+{% else %}
+<p>Nenhum saque ainda.</p>
+{% endfor %}

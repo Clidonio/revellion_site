@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>🛠️ Admin Panel</h1>
+
+<h2>Usuários</h2>
+<div class="grid">
+{% for u in users %}
+<div class="card">{{u[1]}} - {{u[2]}}</div>
+{% endfor %}
+</div>
+
+<h2>Produtos</h2>
+<div class="grid">
+{% for p in produtos %}
+<div class="card">
+<p>{{p[1]}} - {{p[4]}} MZN</p>
+{% if p[6]==0 %}
+<a href="/aprovar/{{p[0]}}" class="btn">Aprovar</a>
+{% else %}
+(Aprovado)
+{% endif %}
+</p>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}

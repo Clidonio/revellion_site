@@ -1,0 +1,33 @@
+<h1>Painel do Criador - REVELLION</h1>
+
+<h2>Seus Produtos</h2>
+<ul>
+{% for p in produtos %}
+    <li>{{p[1]}} - {{p[5]}} MZN
+        {% if p[6] == 0 %}
+            (Pendente de aprovação)
+        {% else %}
+            (Aprovado)
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>
+
+<hr>
+<h2>Adicionar Novo Produto</h2>
+<form method="POST" action="/criador_upload" enctype="multipart/form-data">
+    Nome:<br>
+    <input type="text" name="nome"><br><br>
+
+    Descrição:<br>
+    <textarea name="descricao"></textarea><br><br>
+
+    Preço:<br>
+    <input type="number" name="preco"><br><br>
+
+    Arquivo:<br>
+    <input type="file" name="arquivo"><br><br>
+
+    <button type="submit">Enviar Produto</button>
+</form>
+

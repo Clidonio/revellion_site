@@ -1,0 +1,29 @@
+<h1>👑 Admin Financeiro</h1>
+
+<h2>💰 Ganho da Plataforma: {{ganho or 0}} MZN</h2>
+
+<hr>
+
+<h3>📤 Saques</h3>
+
+{% for s in saques %}
+
+<p>
+ID: {{s[0]}} |
+Usuário: {{s[1]}} |
+Valor: {{s[2]}} MZN |
+Número: {{s[3]}} |
+Status: {{s[4]}} |
+Data: {{s[5]}}
+</p>
+
+{% if s[4] == "pendente" %}
+<a href="/aprovar_saque/{{s[0]}}">✅ Aprovar</a>
+<a href="/rejeitar_saque/{{s[0]}}">❌ Rejeitar</a>
+{% else %}
+(Processado)
+{% endif %}
+
+<hr>
+
+{% endfor %}

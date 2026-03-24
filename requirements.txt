@@ -1,0 +1,5 @@
+Flask
+gunicorn
+fpdf
+requests
+werkzeug

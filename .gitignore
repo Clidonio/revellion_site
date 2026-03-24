@@ -1,0 +1,29 @@
+# 🔐 Segurança
+.git-credentials
+.ssh/
+
+# 📱 Termux / sistema
+.config/
+.lesshst
+.sqlite_history
+
+# 📦 Banco e uploads
+*.db
+uploads/
+downloads/
+storage/
+
+# 🧪 arquivos inúteis
+*.save
+*.csy
+*.htyy
+requirements.txt0
+
+# Python cache
+__pycache__/
+*.pyc
+.git-credentials
+.git-credentials
+.bash_history
+.bash_history
+.bash_history

@@ -1,0 +1,14 @@
+<h1>Criar Ebook com IA</h1>
+
+<form method="POST">
+Tema do Ebook:<br>
+<input type="text" name="tema"><br><br>
+
+<button type="submit">Gerar Ebook</button>
+</form>
+
+{% if conteudo %}
+<hr>
+<h2>Resultado:</h2>
+<pre>{{conteudo}}</pre>
+{% endif %}

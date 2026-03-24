@@ -1,0 +1,21 @@
+<h1>🤖 Gerador de Produtos</h1>
+
+<form method="POST">
+Tema:<br>
+<input type="text" name="tema"><br><br>
+
+<button type="submit">Gerar Produto</button>
+</form>
+
+<hr>
+
+{% if resultado %}
+
+<h2>{{resultado.titulo}}</h2>
+
+<p>{{resultado.descricao}}</p>
+
+<pre>{{resultado.conteudo}}</pre>
+
+{% endif %}
+

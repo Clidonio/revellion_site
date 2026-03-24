@@ -1,0 +1,15 @@
+<!DOCTYPE html> <html lang="pt"> <head> <meta 
+  charset="UTF-8"> <title>Loja Digital</title> <link 
+  rel="stylesheet" href="{{ url_for('static', 
+  filename='css/style.css') }}">
+</head> <body> <div class="index-container"> <h1>Bem-vindo à 
+    Loja Digital</h1> <ul>
+      {% for a in arquivos %} <li>{{ a['titulo'] }} - <a 
+      href="{{ url_for('download', link=a['link_unico']) 
+      }}">Baixar</a></li>
+      {% endfor %} </ul> <p><a href="{{ 
+    url_for('admin_login') }}">Admin</a></p>
+  </div> </body>
+</html>
+0
+
